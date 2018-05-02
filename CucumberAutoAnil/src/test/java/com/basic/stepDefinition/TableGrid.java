@@ -1,6 +1,6 @@
-package sample;
+package com.basic.stepDefinition;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +26,7 @@ public class TableGrid {
 		driver.findElement(By.linkText("Kolkata Knight Riders won by 6 wkts")).click();
 		driver.findElement(By.linkText("Scorecard")).click();
 	    WebElement table = driver.findElement(By.cssSelector("div[class='cb-col cb-col-100 cb-ltst-wgt-hdr']"));
-	    int rowCount= table.findElements(By.cssSelector("div.cb-col cb-col-100 cb-scrd-itms")).size();
+	    //int rowCount= table.findElements(By.cssSelector("div.cb-col cb-col-100 cb-scrd-itms")).size();
 	    int runCount = table.findElements(By.cssSelector("div[class='cb-col cb-col-100 cb-scrd-itms'] div:nth-child(3)")).size();
 	    Integer totalScore=0;
 	   for(int i=0;i<runCount-2;i++){

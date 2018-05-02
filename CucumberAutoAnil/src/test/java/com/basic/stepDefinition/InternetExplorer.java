@@ -1,11 +1,11 @@
-package sample;
+package com.basic.stepDefinition;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import cucumber.api.java.en.Then;
@@ -13,8 +13,9 @@ import cucumber.api.java.en.Then;
 public class InternetExplorer {
 	public WebDriver driver;
 	
-	@Then("^user selects male$")
-	public void user_selects_male() throws Throwable {
+
+@Then("^user selects \"([^\"]*)\"$")
+public void user_selects(String male) throws Throwable {
 	System.setProperty("webdriver.ie.driver", "C:\\Users\\sharathcg\\Downloads\\Selenium\\SeleniumJarAndDrivers - DONOTDELETE\\IEDriverServer.exe");
 		driver = new InternetExplorerDriver();
 		

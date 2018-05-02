@@ -1,4 +1,4 @@
-package sample;
+package com.basic.stepDefinition;
 
 import org.junit.runner.RunWith;
 
@@ -7,7 +7,10 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-
+		monochrome=true,
+		dryRun=false,
+		features={"src/test/resources/com/basic/featurefile/"},
+		glue={"com/basic/stepDefinition/"},
 
 plugin={"pretty",
 		"html:target/cucumber-htmlreport",
@@ -15,8 +18,8 @@ plugin={"pretty",
 	"com.cucumber.listener.ExtentCucumberFormatter:target/ExtentReport.html"
 }
 )
-public class Test {
-	
+public class RunMyFirstTest {
+		
 	
 
 }

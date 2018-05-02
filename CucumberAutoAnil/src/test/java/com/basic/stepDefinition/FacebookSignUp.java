@@ -1,9 +1,9 @@
-package sample;
+package com.basic.stepDefinition;
 
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.Keys;
 
 import org.openqa.selenium.support.ui.Select;
@@ -11,8 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 
-import cucumber.api.PendingException;
-import cucumber.api.java.Before;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -41,32 +40,31 @@ public class FacebookSignUp {
 	
 	}
 
-	@When("^user enters their first name,last name, Mobile number$")
-	public void user_enters_their_first_name_last_name_Mobile_number() throws Throwable {
+	@When("^user enters their \"([^\"]*)\",\"([^\"]*)\", \"([^\"]*)\"$")
+	public void user_enters_their(String fn, String ln, String email) throws Throwable {
 		
 	
-		driver.findElement(By.xpath("//input[@name='firstname']")).sendKeys("Lala");
-		driver.findElement(By.cssSelector("input[name='lastname']")).sendKeys("land");
-		driver.findElement(By.xpath("//input[@name='reg_email__']")).sendKeys("lala@land.com");
+		driver.findElement(By.xpath("//input[@name='firstname']")).sendKeys(fn);
+		driver.findElement(By.cssSelector("input[name='lastname']")).sendKeys(ln);
+		driver.findElement(By.xpath("//input[@name='reg_email__']")).sendKeys(email);
 			
 	}
-
-	@Then("^user sets a password$")
-	public void user_sets_a_password() throws Throwable {
-	  driver.findElement(By.xpath("//input[@name='reg_passwd__']")).sendKeys("lalaLand");
+	@Then("^user sets a \"([^\"]*)\"$")
+	public void user_sets_a(String pwd) throws Throwable {
+	  driver.findElement(By.xpath("//input[@name='reg_passwd__']")).sendKeys(pwd);
 	  	  	  
 	}
 
-	@Then("^user enters a day, month and year of their birth$")
-	public void user_enters_a_day_month_and_year_of_their_birth() throws Throwable {
-		new Select(driver.findElement(By.name("birthday_day"))).selectByValue("1");
+	@Then("^user enters a \"([^\"]*)\", \"([^\"]*)\" and \"([^\"]*)\" of their birth$")
+	public void user_enters_a_and_of_their_birth(String day, String month, String year) throws Throwable {
+		new Select(driver.findElement(By.name("birthday_day"))).selectByValue(day);
 		WebElement birthMonth = new Select(driver.findElement(By.name("birthday_month"))).getFirstSelectedOption();
 		if(birthMonth.getText().equals("Apr")){
-				new Select(driver.findElement(By.name("birthday_month"))).selectByVisibleText("May");
+				new Select(driver.findElement(By.name("birthday_month"))).selectByVisibleText(month);
 		}
 		WebElement birthYear = new Select(driver.findElement(By.name("birthday_year"))).getFirstSelectedOption();
 		if(birthYear.getText().equals("1993")){
-			new Select(driver.findElement(By.name("birthday_year"))).selectByValue("1992");
+			new Select(driver.findElement(By.name("birthday_year"))).selectByValue(year);
 		}
 		driver.get("https://www.google.com/");
 		//parent to child
